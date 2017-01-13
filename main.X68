@@ -1,8 +1,10 @@
 *-----------------------------------------------------------
 * Program    : 	Puissance 4
 * Written by :  Fabien RECCO
-* Date de création :  19 mars 2009
-* Dernière modification :  31 mars 2009
+* vim: set ft=asm68k
+*
+* Date de crÃ©ation :  19 mars 2009
+* DerniÃ¨re modification :  31 mars 2009
 * GROUPE 4 - POSTE 2
 *
 * Description : Version 2 joueurs
@@ -19,7 +21,7 @@ SON	DC.B	'\my_path\kangoo.wav',0
 	
 	
 *** Titre ***
-LIGNE		DC.B	'###########################################',0		on a besoin de concaténer avec 0 pour utiliser le TRAP #15 avec DO=14 (pour que ça s'arrête !!)
+LIGNE		DC.B	'###########################################',0		on a besoin de concatÃ©ner avec 0 pour utiliser le TRAP #15 avec DO=14 (pour que Ã§a s'arrÃªte !!)
 LIGNE2		DC.B	'#                                         #',0
 LIGNE_TEXTE	DC.B	'#          PROJET IPM : PUISSANCE 4       #',0
 
@@ -33,7 +35,7 @@ BAS	DC.B	'|_ _ _',0
 BARRE	DC.B	'|',0
 
 
-*** L'affichage du "pion" varie selon que c'est le joueur 1 qui a joué dans la case, le joueur 2, ou que la case est vide ***
+*** L'affichage du "pion" varie selon que c'est le joueur 1 qui a jouÃ© dans la case, le joueur 2, ou que la case est vide ***
 EMPTY	DC.B	'|     ',0	Case vide
 JOUEUR1 DC.B	'|  X  ',0	Joueur 1
 JOUEUR2 DC.B	'|  O  ',0	Joueur 2
@@ -74,7 +76,7 @@ NOMJ2	DS.B	20
 
 START	ORG	$2000	
 	
-	MOVE.L	#0,D7		Joueur1 commence (pour la première partie !!)
+	MOVE.L	#0,D7		Joueur1 commence (pour la premiÃ¨re partie !!)
 	
 	MOVE.L	#0,A2		A2: score du joueur 1 	(initialisation)
 	MOVE.L	#0,A3		A3: score du joueur 2	(initialisation)
@@ -85,29 +87,29 @@ START	ORG	$2000
 		
 	
 TITRE
-	BSR	SAUTER		J'utilise la subroutine	SAUTER pour sauter une ligne (et se déplacer vers la droite)
+	BSR	SAUTER		J'utilise la subroutine	SAUTER pour sauter une ligne (et se dÃ©placer vers la droite)
 	LEA	LIGNE,A1
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	
-	BSR	SAUTER		J'utilise la subroutine	SAUTER pour sauter une ligne (et se déplacer vers la droite)
+	BSR	SAUTER		J'utilise la subroutine	SAUTER pour sauter une ligne (et se dÃ©placer vers la droite)
 	LEA	LIGNE2,A1	Je mets l'adresse LIGNE2 dans A1
 	TRAP	#15
 	
-	BSR	SAUTER		J'utilise la subroutine	SAUTER pour sauter une ligne (et se déplacer vers la droite)
+	BSR	SAUTER		J'utilise la subroutine	SAUTER pour sauter une ligne (et se dÃ©placer vers la droite)
 	LEA	LIGNE_TEXTE,A1	Je mets l'adresse LIGNE_TEXTE dans A1
 	TRAP	#15
 	
-	BSR	SAUTER		J'utilise la subroutine	SAUTER pour sauter une ligne (et se déplacer vers la droite)
+	BSR	SAUTER		J'utilise la subroutine	SAUTER pour sauter une ligne (et se dÃ©placer vers la droite)
 	LEA	LIGNE2,A1	Je mets l'adresse LIGNE2 dans A1
 	TRAP	#15
 	
-	BSR	SAUTER		J'utilise la subroutine	SAUTER pour sauter une ligne (et se déplacer vers la droite)
+	BSR	SAUTER		J'utilise la subroutine	SAUTER pour sauter une ligne (et se dÃ©placer vers la droite)
 	LEA	LIGNE,A1	Je mets l'adresse LIGNE dans A1
 	TRAP	#15
 	
-	BSR	SAUTER		J'utilise la subroutine	SAUTER pour sauter une ligne (et se déplacer vers la droite)
-	BSR	SAUTER		J'utilise la subroutine	SAUTER pour sauter une ligne (et se déplacer vers la droite)
+	BSR	SAUTER		J'utilise la subroutine	SAUTER pour sauter une ligne (et se dÃ©placer vers la droite)
+	BSR	SAUTER		J'utilise la subroutine	SAUTER pour sauter une ligne (et se dÃ©placer vers la droite)
 	
 	BSR	SCORE		***
 	
@@ -116,19 +118,19 @@ TITRE
 
 SCORE
 	LEA	SCR,A1
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	
 	MOVE.L	A2,D1
-	MOVE.L	#3,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	MOVE.L	#3,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	
 	LEA	ESP,A1
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	
 	MOVE.L	A3,D1
-	MOVE.L	#3,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	MOVE.L	#3,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	
 		
@@ -143,58 +145,58 @@ SCORE
 
 SAUTER
 	LEA	SAUT,A1		Je mets l'adresse SAUT dans le registre d'adresses A1
-	MOVE.L	#14,D0		Je mets 14 dans le registre de données D0 pour utiliser le TRAP #15 correspondant à l'affichage
+	MOVE.L	#14,D0		Je mets 14 dans le registre de donnÃ©es D0 pour utiliser le TRAP #15 correspondant Ã  l'affichage
 	TRAP	#15
 	RTS	
 	
 AFFICHAGE_HAUT
-	LEA	NBRS,A1		Je donne à A1 l'adresse de NBRS
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	LEA	NBRS,A1		Je donne Ã  A1 l'adresse de NBRS
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
-	BSR	SAUTER		Je vais à la subroutine SAUTER
+	BSR	SAUTER		Je vais Ã  la subroutine SAUTER
 	BSR	AFFICHAGE_HAUT2
 	RTS
 	
 AFFICHAGE_HAUT2
-	LEA	HAUT,A1		Je donne à A1 l'adresse de HAUT
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	LEA	HAUT,A1		Je donne Ã  A1 l'adresse de HAUT
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
-	DBF 	D1,AFFICHAGE_HAUT2	Si D1!=-1 je vais à AFFICHAGE_HAUT
-	BSR	SAUTER		Je vais à la subroutine SAUTER
+	DBF 	D1,AFFICHAGE_HAUT2	Si D1!=-1 je vais Ã  AFFICHAGE_HAUT
+	BSR	SAUTER		Je vais Ã  la subroutine SAUTER
 	RTS
 
 
-INTERMEDIAIRE			*écriture de la ligne sans pions
-	LEA	EMPTY,A1	Je donne à A1 l'adresse de MESSAGE
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+INTERMEDIAIRE			*Ã©criture de la ligne sans pions
+	LEA	EMPTY,A1	Je donne Ã  A1 l'adresse de MESSAGE
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15		
-	DBF 	D1,INTERMEDIAIRE	Si D1!=-1 je vais à INTERMEDIAIRE
+	DBF 	D1,INTERMEDIAIRE	Si D1!=-1 je vais Ã  INTERMEDIAIRE
 	
 	LEA	BARRE,A1
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	
-	LEA	SAUT,A1		Je donne à A1 l'adresse SAUT
-	MOVE.L	#6,D1		Je mets 6(valeur décimale) dans le registre de données D1
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	LEA	SAUT,A1		Je donne Ã  A1 l'adresse SAUT
+	MOVE.L	#6,D1		Je mets 6(valeur dÃ©cimale) dans le registre de donnÃ©es D1
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	
-	BSR	INTERMEDIAIRE2	On va à la subroutine INTERMEDIAIRE2
+	BSR	INTERMEDIAIRE2	On va Ã  la subroutine INTERMEDIAIRE2
 	
 	RTS
 
 	
-INTERMEDIAIRE2			*écriture de la ligne avec les pions
+INTERMEDIAIRE2			*Ã©criture de la ligne avec les pions
 	BSR	ECRIRE_PION	
-	DBF 	D1,INTERMEDIAIRE2	Si D1!=-1 je vais à INTERMEDIAIRE2
+	DBF 	D1,INTERMEDIAIRE2	Si D1!=-1 je vais Ã  INTERMEDIAIRE2
 	
 	
 	LEA	BARRE,A1	Je mets BARRE dans A1
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP #15 correspondant à l'affichage
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP #15 correspondant Ã  l'affichage
 	TRAP	#15
 	
 	LEA	SAUT,A1		Je mets SAUT dans A1
-	MOVE.L	#6,D1		Le registre D1 prend la valeur #6 (move immédiat)
+	MOVE.L	#6,D1		Le registre D1 prend la valeur #6 (move immÃ©diat)
 	MOVE.L	#14,D0		Le registre D0 prend la valeur 14 pour utiliser le TRAP #15 correspondant
 	TRAP	#15
 	
@@ -202,20 +204,20 @@ INTERMEDIAIRE2			*écriture de la ligne avec les pions
 
 	
 AFFICHAGE_BAS
-	LEA	BAS,A1		Je donne à A1 l'adresse de MESSAGE
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	LEA	BAS,A1		Je donne Ã  A1 l'adresse de MESSAGE
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	DBF 	D1,AFFICHAGE_BAS
 	
 	LEA	BARRE,A1
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	BSR	SAUTER
 	RTS
  
  
  
-*** Programme d'écriture d'un pion dans la grille : X, 0 ou vide ***
+*** Programme d'Ã©criture d'un pion dans la grille : X, 0 ou vide ***
 	
 
 ECRIRE_PION
@@ -238,29 +240,29 @@ ECRITURE
  	BEQ	PION1
  	CMP.L	#2,D3
  	BEQ	PION2
-	LEA	EMPTY,A1	Je donne à A1 l'adresse de EMPTY
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	LEA	EMPTY,A1	Je donne Ã  A1 l'adresse de EMPTY
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	
 	RTS
 	
 PION1
-	LEA	JOUEUR1,A1	Je donne à A1 l'adresse de JOUEUR1
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	LEA	JOUEUR1,A1	Je donne Ã  A1 l'adresse de JOUEUR1
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	
 	RTS
 	
 PION2
-	LEA	JOUEUR2,A1	Je donne à A1 l'adresse de JOUEUR2
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	LEA	JOUEUR2,A1	Je donne Ã  A1 l'adresse de JOUEUR2
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	
 	RTS
 *** FIN du prgm ***
 
 
-CLEAR				*Efface l'écran
+CLEAR				*Efface l'Ã©cran
 	MOVE.W	#$FF00,D1
 	MOVE.L	#11,D0
 	TRAP	#15
@@ -299,7 +301,7 @@ DEBUT
 
 	
 INITIALISATION
-	MOVE.B	#0,(A0)+	Je mets 0 dans la case mémoire ayant l'adresse 1200
+	MOVE.B	#0,(A0)+	Je mets 0 dans la case mÃ©moire ayant l'adresse 1200
 	DBF	D1,INITIALISATION
 	
 	RTS
@@ -309,14 +311,14 @@ ENTRERNOMBRE
 	BSR	SAUTER
 	MOVE.L	#$1206,A5
 	
-	ADD.L	#1,D7		On ajoute 1 à D7
+	ADD.L	#1,D7		On ajoute 1 Ã  D7
 	BSR	TEXTE_JOUER
 	
 	MOVE.L	#$1210,A0	
 	
 	MOVE.L 	#0,D1		initialisation D1
 	MOVE.L	#4,D0		
-	TRAP	#15		On lit un numéro de colonne au clavier, qui sera stocké dans D1 (Longword)
+	TRAP	#15		On lit un numÃ©ro de colonne au clavier, qui sera stockÃ© dans D1 (Longword)
 	MOVE.L	D1,D6
 	
 	BSR	SAUTER
@@ -350,7 +352,7 @@ ENTRERNOMBRE
 		
 	SUB.L	#1,D7	
 	LEA	ERROR,A1
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	BSR	SAUTER
 	BSR	ENTRERNOMBRE	cas ou on a pas mis un numero de colonne valide
@@ -372,7 +374,7 @@ JEU
 FINITO
 	BSR	SAUTER
 	LEA	NUL,A1
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	
 	SUB.L	#1,D7
@@ -401,7 +403,7 @@ REMPLISSAGE
 PLEIN
 	SUB.L	#1,D7
 	LEA	COL_PLN,A1
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	
 	JMP	JEU
@@ -425,14 +427,14 @@ TEXTE_JOUER
 	BEQ	TEXTE2
 	
 	LEA	J1,A1
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	RTS
 	
 	
 TEXTE2
 	LEA	J2,A1
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	RTS
 
@@ -454,10 +456,10 @@ PROGRAM
 
 *********** Pour savoir si un joueur gagne la partie ************
 
-GAGNE		*adresse du dernier pion ajouté : dans A6
+GAGNE		*adresse du dernier pion ajoutÃ© : dans A6
 		* pion du joueur dans D6 (colonne)
 		* numero du joueur : D7
-* il faut vérifier si il y a une ligne de 4 pions dans la colonne, la ligne et les deux diagonales
+* il faut vÃ©rifier si il y a une ligne de 4 pions dans la colonne, la ligne et les deux diagonales
 	
 	
 	
@@ -582,7 +584,7 @@ FINI
 	
 	BSR	SAUTER
 	LEA	END,A1
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	
 	BSR	SOUND
@@ -592,7 +594,7 @@ FINI
 	
 	BSR	SAUTER
 	LEA	G2,A1
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	ADD.L	#1,A3
 	
@@ -609,7 +611,7 @@ SOUND
 G1GAGNE	
 	BSR	SAUTER
 	LEA	G1,A1
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	ADD.L	#1,A2
 	
@@ -619,7 +621,7 @@ FINDEPARTIE
 	BSR	SAUTER
 	BSR 	SAUTER
 	LEA	REJOUER,A1
-	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant à l'affichage
+	MOVE.L	#14,D0		Je mets 14 dans D0 pour utiliser le TRAP correspondant Ã  l'affichage
 	TRAP	#15
 	
 	MOVE.L	#5,D0
