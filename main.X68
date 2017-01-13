@@ -1,7 +1,7 @@
 *-----------------------------------------------------------
 * Program    : 	Puissance 4
 * Written by :  Fabien RECCO
-* vim: set ft=asm
+* vim: set ft=asm:
 *
 * Date de création :  19 mars 2009
 * Dernière modification :  31 mars 2009
