@@ -1,8 +1,8 @@
+* vim: set filetype=asm68k:
+
 *-----------------------------------------------------------
 * Program    : 	Puissance 4
 * Written by :  Fabien RECCO
-vim: set syntax=asm68k:
-*
 * Date de création :  19 mars 2009
 * Dernière modification :  31 mars 2009
 * GROUPE 4 - POSTE 2
