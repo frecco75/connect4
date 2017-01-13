@@ -1,4 +1,4 @@
-* vim: set filetype=asm68k:
+* vim: set filetype=nasm:
 
 *-----------------------------------------------------------
 * Program    : 	Puissance 4
